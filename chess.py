@@ -14,13 +14,17 @@ def new_board():
 def make_move(PLAYER, x1, y1, x2, y2):
     board = new_board()
     if(PLAYER == 1 and board[x1][y1][0]=="W"):
-        pass
+        if(board[x1][y1][1] == "p"):
+            if not ( (y2-y1 == 2) or (y2 - y1 == 1)):
+                print("pawn doesn't move like that")
 
     if(PLAYER == 2 and board[x1][y1][0]=="B"):
-        pass
+        if(board[x1][y1][1] == "p"):
+            if not ( (y2-y1 == -2) or (y2 - y1 == -1)):
+                print("pawn doesn't move like that")
 
-
-    board[x1][y1], board[x2][y2] = "-", board[x_to_move][y_to_move]
+    # moving on board
+    board[x1][y1], board[x2][y2] = "-", board[x1][y1]
 
 
 def draw_board(board):
