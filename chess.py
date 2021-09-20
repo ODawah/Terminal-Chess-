@@ -13,7 +13,13 @@ def new_board():
 
 def make_move(PLAYER, x_to_move, y_to_move, x_move_to, y_move_to):
     board = new_board()
-    # moving of board on piece
+    if(PLAYER == 1 and board[x_to_move][y_to_move][0]=="W"):
+        pass
+
+    if(PLAYER == 2 and board[x_to_move][y_to_move][0]=="B"):
+        pass
+
+
     board[x_to_move][y_to_move], board[x_move_to][y_move_to] = "-", board[x_to_move][y_to_move]
 
 
