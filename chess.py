@@ -36,8 +36,9 @@ def rook(x1, x2, y1, y2, board):
         if board[x][y2] != "-":
             print("rook doesn't move like that")
             return False
-        else:
-            return True
+    if board[x1][y1][0] != board[x2][y2][0] :
+        return True
+    
 
 
 def knight(x1, x2, y1, y2, board):
@@ -51,12 +52,19 @@ def knight(x1, x2, y1, y2, board):
 
 def bishop(x1,x2,y1,y2,board):
     for i ,j in range(x2,y2):
-        if(i-j == 0 and board[i][j] == "-")
-            return True
-        else if (board[x2][y2][0] != board[x1][x2][0]):
-            return True
-        else:
+        if(i-j != 0 and board[i][j] != "-"):
             return False
+    if (board[x2][y2][0] != board[x1][x2][0]):
+            return True
+
+def queen(x1,x2,y1,y2,board):
+    for i ,j in range(x2,y2):
+        if ((i-j != 0 and board[i][j] != "-") or (board[i][j] != "-") ):
+            return False
+    if (board[x2][y2][0] != board[x1][x2][0]):
+            return True
+
+            
 
 
 def make_move(PLAYER, x1, y1, x2, y2):
