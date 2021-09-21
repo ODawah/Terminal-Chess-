@@ -78,52 +78,73 @@ def make_move(PLAYER, x1, y1, x2, y2):
         if board[x1][y1][1] == "p":
             if pawn(PLAYER, x1, x2, y1, y2, board):
                 board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                draw_board(board)
         elif board[x1][y1] == "r":
                 if rook(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "b":
                 if bishop(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "n":
                 if knight(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "q":
                 if queen(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "k":
                 if king(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
 
     if PLAYER == 2 and board[x1][y1][0] == "B":
         if board[x1][y1][1] == "p":
             if pawn(PLAYER, x1, x2, y1, y2, board):
                 board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                draw_board(board)
         elif board[x1][y1] == "r":
                 if rook(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "b":
                 if bishop(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "n":
                 if knight(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "q":
                 if queen(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
         elif board[x1][y1] == "k":
                 if king(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+                    draw_board(board)
     else:
         print("Play with your pieces only")
 
 
 def draw_board(board):
-    pass
+    print(board)
 
 
 def announce_winner(PLAYER):
-    pass
-
+    if PLAYER == 1:
+        print("PLAYER ONE WINS!!")
+    else:
+        print("PLAYER TWO WINS!!")
 
 def check_winner(BOARD, PLAYER):
-    pass
+    if PLAYER == 1:
+        for i in range (BOARD):
+            if BOARD[i].index("Bk") == -1:
+                return announce_winner(PLAYER)
+    else:
+        for i in range (0,9):
+            if BOARD[i].index("Wk") == -1:
+                return announce_winner(PLAYER)
