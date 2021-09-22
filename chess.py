@@ -84,7 +84,8 @@ class king:
 
     def rule(self,current):
         if (current.x1 - self.x2 > 1) or (current.y1 - self.y2 > 1): 
-            pass
+            return True
+        
 
     
     
