@@ -2,23 +2,20 @@ def new_board():
     return [
         ["Wr", "Wb", "Wn", "Wq", "Wk", "Wn", "Wb", "Wr"],
         ["Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp", "Wp"],
-        ["-", "-", "-", "-", "-", "-", "-", "-"],
-        ["-", "-", "-", "-", "-", "-", "-", "-"],
-        ["-", "-", "-", "-", "-", "-", "-", "-"],
-        ["-", "-", "-", "-", "-", "-", "-", "-"],
+        ["--", "--", "--", "--", "--", "--", "--", "--"],
+        ["--", "--", "--", "--", "--", "--", "--", "--"],
+        ["--", "--", "--", "--", "--", "--", "--", "--"],
+        ["--", "--", "--", "--", "--", "--", "--", "--"],
         ["Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp", "Bp"],
         ["Br", "Bb", "Bn", "Bq", "Bk", "Bn", "Bb", "Br"],
     ]
 
-class pieces():
+class Pieces():
 
     def __init__(self,x1,y1,board):
         self.x1 = x1
         self.y1 = y1
         self.current = board[x1][y1]
-
-    def current_position(self): 
-        return self.x1,self.y1
 
     def validMove(self,x2,y2):
         pass
@@ -83,9 +80,9 @@ class king:
     def __init__(self,x2,y2,current):
         self.x2 = x2
         self.y2 = y2
-        pieces.current_position = current 
+        Pieces.current_position = current 
 
-    def rule(self):
+    def rule(self,current):
         if (current.x1 - self.x2 > 1) or (current.y1 - self.y2 > 1): 
             pass
 
