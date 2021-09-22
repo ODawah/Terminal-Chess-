@@ -10,10 +10,22 @@ def new_board():
         ["Br", "Bb", "Bn", "Bq", "Bk", "Bn", "Bb", "Br"],
     ]
 
+class pieces():
+
+    def __init__(self,x1,y1,board):
+        self.x1 = x1
+        self.y1 = y1
+        self.current = board[x1][y1]
+
+    def validMove(self):
+        pass
+
+
+
 
 def pawn(player, x1, x2, y1, y2, board):
     if player == 1:
-        if (y2 - y1 == 2) and (board[x2][y2] == "-") and x1 == 2:
+        if (y2 - y1 == 2) and (board[x2][y2] == "-") and x1 == 1:
             return True
         elif (y2 - y1 == 1) and board[x2][y2] == "-":
             return True
@@ -22,7 +34,7 @@ def pawn(player, x1, x2, y1, y2, board):
             return False
 
     elif player == 2:
-        if (y2 - y1 == -2) and board[x2][y2] == "-" and x1 == 7:
+        if (y2 - y1 == -2) and board[x2][y2] == "-" and x1 == 6:
             return True
         elif (y2 - y1 == -1) and board[x2][y2] == "-":
             return True
@@ -64,7 +76,11 @@ def queen(x1,x2,y1,y2,board):
     if (board[x2][y2][0] != board[x1][x2][0]):
             return True
 
-def king (x1,x2,y1,y2,board):
+class king (x1,x2,y1,y2,board):
+    def __init__(self,x2,y2):
+        self.x2 = x2
+        self.y2 = y2
+
     if ( x2-x1 != (1 or -1) or y2-y1 != (1 or -1) or x2-x1 != y2-y1 ):
         return False
     else:
@@ -74,6 +90,7 @@ def king (x1,x2,y1,y2,board):
 
 def make_move(PLAYER, x1, y1, x2, y2):
     board = new_board()
+
     if PLAYER == 1 and board[x1][y1][0] == "W":
         if board[x1][y1][1] == "p":
             if pawn(PLAYER, x1, x2, y1, y2, board):
@@ -130,21 +147,22 @@ def make_move(PLAYER, x1, y1, x2, y2):
 
 
 def draw_board(board):
-    print(board)
+        print(*board, sep="\n")
 
 
 def announce_winner(PLAYER):
     if PLAYER == 1:
         print("PLAYER ONE WINS!!")
+        return PLAYER
     else:
         print("PLAYER TWO WINS!!")
 
 def check_winner(BOARD, PLAYER):
     if PLAYER == 1:
-        for i in range (BOARD):
-            if BOARD[i].index("Bk") == -1:
+        for i in range (0,9):
+            if BOARD[i].index("Bk"):
                 return announce_winner(PLAYER)
     else:
         for i in range (0,9):
-            if BOARD[i].index("Wk") == -1:
+            if BOARD[i].index("Wk"):
                 return announce_winner(PLAYER)

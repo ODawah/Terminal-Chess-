@@ -11,6 +11,8 @@ board = new_board()
 
 if __name__ == "__main__":
     while True:
+        draw_board(board)
+
         print("enter x1 position")
         x1 = int(input())
         print("enter y1 position")
@@ -20,7 +22,6 @@ if __name__ == "__main__":
         print("enter y2 position")
         y2 = int(input())
 
-        draw_board(board)
         make_move(PLAYER_1,x1,y1,x2,y2)
         if check_winner(board, PLAYER_1):
             announce_winner(PLAYER_1)
