@@ -17,7 +17,10 @@ class pieces():
         self.y1 = y1
         self.current = board[x1][y1]
 
-    def validMove(self):
+    def current_position(self): 
+        return self.x1,self.y1
+
+    def validMove(self,x2,y2):
         pass
 
 
@@ -76,15 +79,19 @@ def queen(x1,x2,y1,y2,board):
     if (board[x2][y2][0] != board[x1][x2][0]):
             return True
 
-class king (x1,x2,y1,y2,board):
-    def __init__(self,x2,y2):
+class king:
+    def __init__(self,x2,y2,current):
         self.x2 = x2
         self.y2 = y2
+        pieces.current_position = current 
 
-    if ( x2-x1 != (1 or -1) or y2-y1 != (1 or -1) or x2-x1 != y2-y1 ):
-        return False
-    else:
-        return True
+    def rule(self):
+        if (current.x1 - self.x2 > 1) or (current.y1 - self.y2 > 1): 
+            pass
+
+    
+    
+
             
 
 
@@ -112,11 +119,7 @@ def make_move(PLAYER, x1, y1, x2, y2):
                 if queen(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
                     draw_board(board)
-        elif board[x1][y1] == "k":
-                if king(x1, x2, y1, y2, board):
-                    board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                    draw_board(board)
-
+        
     if PLAYER == 2 and board[x1][y1][0] == "B":
         if board[x1][y1][1] == "p":
             if pawn(PLAYER, x1, x2, y1, y2, board):
@@ -138,12 +141,8 @@ def make_move(PLAYER, x1, y1, x2, y2):
                 if queen(x1, x2, y1, y2, board):
                     board[x1][y1], board[x2][y2] = "-", board[x1][y1]
                     draw_board(board)
-        elif board[x1][y1] == "k":
-                if king(x1, x2, y1, y2, board):
-                    board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                    draw_board(board)
-    else:
-        print("Play with your pieces only")
+                else:
+                    print("Play with your pieces only")
 
 
 def draw_board(board):
