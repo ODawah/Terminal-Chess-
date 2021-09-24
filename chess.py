@@ -28,18 +28,18 @@ class Pawn:
 
     def rule(self,player,x1,y1):
         if player == 1:
-            if (y2 - y1 == 2) and x1 == 1:
+            if (self.y2 - y1 == 2) and x1 == 1:
                 return True
-            elif (y2 - y1 == 1:
+            elif (self.y2 - y1 == 1):
                 return True
             else:
                 print("pawn doesn't move like that")
                 return False
 
         elif player == 2:
-            if (y2 - y1 == -2) and x1 == 6:
+            if (self.y2 - y1 == -2) and x1 == 6:
                 return True
-            elif (y2 - y1 == -1):
+            elif (self.y2 - y1 == -1):
                 return True
             else:
                 print("pawn doesn't move like that")
@@ -113,52 +113,9 @@ class king:
 
 def make_move(PLAYER, x1, y1, x2, y2):
     board = new_board()
-
-    if PLAYER == 1 and board[x1][y1][0] == "W":
-        if board[x1][y1][1] == "p":
-            if pawn(PLAYER, x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "r":
-            if rook(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "b":
-            if bishop(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "n":
-            if knight(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "q":
-            if queen(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-
-    if PLAYER == 2 and board[x1][y1][0] == "B":
-        if board[x1][y1][1] == "p":
-            if pawn(PLAYER, x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "r":
-            if rook(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "b":
-            if bishop(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "n":
-            if knight(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-        elif board[x1][y1] == "q":
-            if queen(x1, x2, y1, y2, board):
-                board[x1][y1], board[x2][y2] = "-", board[x1][y1]
-                draw_board(board)
-            else:
-                print("Play with your pieces only")
+    
+    board[x1][y1], board[x2][y2] = "-", board[x1][y1]
+    draw_board(board)
 
 
 def draw_board(board):
